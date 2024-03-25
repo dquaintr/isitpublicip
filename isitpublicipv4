@@ -1,0 +1,23 @@
+"""This is a qucik python code that tells the user if an entered IPv4 Address belongs to a public or a private IP Address"""
+
+ip_address = input("Please enter IP Address (IPv4): ")
+
+parts_list = ip_address.split(".")
+
+try:
+    if int(parts_list[0]) == 10:
+        print(f"{ip_address} is a private IP Address.")
+    elif int(parts_list[0]) == 172 and 16 <= int(parts_list[1]) <= 31 :
+        print(f"{ip_address} is a private IP Address.")
+    elif int(parts_list[0]) == 192 and int(parts_list[1]) == 168:
+        print(f"{ip_address} is a private IP Address.")
+    elif int(parts_list[0]) == 169 and int(parts_list[1]) == 254:
+        print(f"{ip_address} is a private IP Address used for Automatic Private IP Addressing.")
+    elif int(parts_list[0]) > 255 or int(parts_list[1]) > 255
+        or int(parts_list[2]) > 255 or int(parts_list[3]) > 255:
+        print(f"{ip_address} is not a valid IPv4 Address.")
+    else:
+        print(f"{ip_address} is a public IP Address.")
+
+except:
+    print("Please enter a valid IPv4 Address.")
